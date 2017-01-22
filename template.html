@@ -1,0 +1,33 @@
+<html ng-app="Movie Reviews">
+<title>My Movie Reviews</title>
+<head>
+  <link href="style.css" rel="stylesheet"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<div ng-controller="mainController" class="centerBody">
+  <h1>{{heading}}</h1>
+  <div ng-repeat="movie in movies">
+    <span><p class="movieTitle">{{movie.title}}</p></span>
+    <span><p class="movieTitle">{{movie.upvotes}}--upvotes</p></span>
+    <span><button ng-click="upvote(movie)">^</button>
+      <div>
+
+        <form ng-submit="addReview(movie)" >
+        <input  placeholder="Add a review here ..." ng-model="review"></input>
+        <button type="submit">Add</button>
+      </form>
+      <div ng-repeat="review in movie.reviews">
+      <ul>
+        {{review}}some
+      </ul>
+    </div>
+      </div>
+    <hr>
+  </div>
+  <form ng-submit="addMovies()">
+    <input placeholder="Add a movie" ng-model="title"></input>
+    <button type="submit">  Add  </button>
+  </form>
+</div>
+</html>
